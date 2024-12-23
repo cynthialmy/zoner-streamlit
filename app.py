@@ -125,19 +125,80 @@ st.write("Adjust your circadian rhythm day-by-day based on your travel details:"
 st.dataframe(format_schedule(schedule_df.set_index("Activity")))
 
 # --- Additional Tips ---
-st.header("💡 Helpful Tips")
-if advance:
-    st.write("""
-    - Expose yourself to bright light 2–4 hours after T_min each day.
-    - Avoid light 4–6 hours before your local bedtime.
-    - Shift meals and exercise routines earlier each day.
-    """)
-else:
-    st.write("""
-    - Expose yourself to bright light 4–6 hours before T_min each day.
-    - Avoid light during the first 2–4 hours after waking.
-    - Shift meals and exercise routines later each day.
-    """)
+with st.sidebar:
+    st.header("💡 Helpful Tips")
+
+    if advance:
+        with st.expander("🌞 Light Exposure"):
+            st.write("""
+            - **Why It Matters**: Exposure to bright light after your temperature minimum (T-min) helps advance your internal clock, making you feel sleepy earlier and wake up earlier.
+            - **What To Do**:
+              - Start viewing bright light **2–4 hours after T-min** each day. For example, if your T-min is 5:00 AM, expose yourself to sunlight or a light therapy lamp between 7:00 AM and 9:00 AM.
+              - Avoid bright light **4–6 hours before your local bedtime** to prevent delays in your clock.
+            """)
+
+        with st.expander("🌒 Light Avoidance"):
+            st.write("""
+            - **Why It Matters**: Avoiding bright light at the wrong times prevents your circadian rhythm from being delayed, ensuring your body clock aligns with your target schedule.
+            - **What To Do**:
+              - Use blue-light blocking glasses, eye masks, or dim your environment **4–6 hours before your local bedtime**.
+            """)
+
+        with st.expander("🏃‍♀️ Exercise"):
+            st.write("""
+            - **Why It Matters**: Physical activity helps shift your circadian rhythm. Exercising within 4 hours after T-min can advance your clock.
+            - **What To Do**:
+              - Schedule moderate-intensity exercise, like walking or jogging, during this window to reinforce the shift.
+            """)
+
+        with st.expander("🍽 Meal Timing"):
+            st.write("""
+            - **Why It Matters**: Aligning your meal schedule with your target time zone sends strong signals to your body about the new schedule.
+            - **What To Do**:
+              - Shift meals **earlier each day by (Time Shift ÷ Days)** to match your target time zone.
+              - For example, if you're shifting by 6 hours over 3 days, move your meal times 2 hours earlier daily.
+            """)
+
+        with st.expander("📍 Consistency"):
+            st.write("""
+            - Gradually adjust your entire routine (light, meals, and sleep) each day to align with the target time zone.
+            """)
+
+    else:
+        with st.expander("🌞 Light Exposure"):
+            st.write("""
+            - **Why It Matters**: Exposure to bright light before T-min delays your internal clock, making you feel sleepy later and wake up later.
+            - **What To Do**:
+              - Start viewing bright light **4–6 hours before T-min** each day. For example, if your T-min is 5:00 AM, expose yourself to sunlight or a light therapy lamp between 11:00 PM and 1:00 AM.
+              - Avoid bright light **during the first 2–4 hours after waking up** to prevent advancing your clock.
+            """)
+
+        with st.expander("🌒 Light Avoidance"):
+            st.write("""
+            - **Why It Matters**: Avoiding bright light at the wrong times prevents advancing your circadian rhythm too early, keeping your clock aligned with the target schedule.
+            - **What To Do**:
+              - Use blue-light blocking glasses, eye masks, or dim your environment **during the first 2–4 hours after waking up**.
+            """)
+
+        with st.expander("🏃‍♀️ Exercise"):
+            st.write("""
+            - **Why It Matters**: Physical activity helps shift your circadian rhythm. Exercising within 4 hours before T-min can delay your clock.
+            - **What To Do**:
+              - Schedule moderate-intensity exercise, like walking or jogging, during this window to reinforce the delay.
+            """)
+
+        with st.expander("🍽 Meal Timing"):
+            st.write("""
+            - **Why It Matters**: Aligning your meal schedule with your target time zone helps reinforce circadian adjustments.
+            - **What To Do**:
+              - Shift meals **later each day by (Time Shift ÷ Days)** to match your target time zone.
+              - For example, if you're shifting by 6 hours over 3 days, move your meal times 2 hours later daily.
+            """)
+
+        with st.expander("📍 Consistency"):
+            st.write("""
+            - Gradually adjust your entire routine (light, meals, and sleep) each day to align with the target time zone.
+            """)
 
 # --- Resources Section ---
 st.header("📖 Resources")
